@@ -1,6 +1,7 @@
 # Import python packages
 import streamlit as st
 from snowflake.snowpark.functions import col
+import requests
 
 # Write directly to the app
 st.title(":cup_with_straw: Customise Your Smoothie! :cup_with_straw:")
@@ -38,7 +39,10 @@ if ingredients_list:
     #For loop to concatenate each fruit to the string
     for fruit in ingredients_list:
         ingredients_string += fruit +' '
-
+        #get info from fruityvice api
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        #create a data frame with the response
+        fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True) 
     #write the selected output to app
     # st.write(ingredients_string)
 
@@ -59,10 +63,4 @@ values ('""" + ingredients_string + """','"""+name_on_order+"""')"""
         st.success('Your Smoothie is ordered, '+name_on_order+'!', icon="✅")
 
 
-# New section to display fruityvice nutrition information
-import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-#st.text(fruityvice_response.json())
 
-#create a data frame with the response
-fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
