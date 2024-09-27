@@ -62,7 +62,7 @@ if ingredients_list:
         pd_dffr = pd.DataFrame.from_dict(pd_fr)
         ren = pd_dffr.rename(columns={"name": "Fruit", "nutritions": "Nutritional Value"})
         out = ren[["Fruit","Nutritional Value"]]
-        st.dataframe(out, use_container_width=True)
+        st.dataframe(out, use_container_width=False)
 
 
 
