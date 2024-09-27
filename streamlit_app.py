@@ -25,8 +25,8 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 
 #Convert the snowpark Datafram to a pandas dataframe soe we can use the LOC function
 pd_df = my_dataframe.to_pandas()
-st.dataframe(pd_df)
-st.stop()
+# st.dataframe(pd_df)
+# st.stop()
 
 
 ingredients_list = st.multiselect(
@@ -47,6 +47,11 @@ if ingredients_list:
     #For loop to concatenate each fruit to the string
     for fruit in ingredients_list:
         ingredients_string += fruit +' '
+
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit, 'SEARCH_ON'].iloc[0]
+        st.write('The search value for ',fruit,' is ',search_on,'.')
+
+
         #add some formatting
         st.subheader(fruit + ' Nutrition Information')
         #get info from fruityvice api
