@@ -3,7 +3,6 @@ import streamlit as st
 from snowflake.snowpark.functions import col
 import requests
 import pandas as pd
-from st_aggrid import AgGrid
 
 # Write directly to the app
 st.title(":cup_with_straw: Customise Your Smoothie! :cup_with_straw:")
@@ -68,7 +67,7 @@ if ingredients_list:
         #only select 1 column
         out = ren["Nutritional Value"]
         #output
-        AgGrid(out)
+        st.dataframe(out, use_container_width=False)
 
 
 
