@@ -60,7 +60,7 @@ if ingredients_list:
         # fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True).to_pandas() 
         pd_fr = fruityvice_response.json()
         pd_dffr = pd.DataFrame.from_dict(pd_fr)
-        out = pd_dffr[0,3]
+        out = pd_dffr["nutritions"]
         st.write(out)
 
 
