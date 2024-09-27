@@ -61,7 +61,7 @@ if ingredients_list:
         pd_fr = fruityvice_response.json()
         pd_dffr = pd.DataFrame.from_dict(pd_fr)
         out = pd_dffr["nutritions"]
-        st.write(out)
+        st.write(pd_dffr)
 
 
 
