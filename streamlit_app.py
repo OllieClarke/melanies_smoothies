@@ -57,7 +57,12 @@ if ingredients_list:
         #get info from fruityvice api
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+search_on)
         #create a data frame with the response
-        fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True).to_pandas() 
+        # fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True).to_pandas() 
+        pd_fr = fruityvice_response.json().to_pandas()
+        out = st.dataframe(pd_fr)
+
+
+
     #write the selected output to app
     # st.write(ingredients_string)
 
