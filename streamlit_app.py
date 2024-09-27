@@ -59,8 +59,7 @@ if ingredients_list:
         #create a data frame with the response
         # fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True).to_pandas() 
         pd_fr = fruityvice_response.json()
-        o = st.dataframe(pd_fr)
-        st.write(type(o))
+        st.write(type(pd_fr))
 
 
 
