@@ -39,8 +39,10 @@ if ingredients_list:
     #For loop to concatenate each fruit to the string
     for fruit in ingredients_list:
         ingredients_string += fruit +' '
+        #add some formatting
+        st.subheader(fruit + ' Nutrition Information')
         #get info from fruityvice api
-        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit)
         #create a data frame with the response
         fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True) 
     #write the selected output to app
