@@ -57,11 +57,12 @@ if ingredients_list:
         #get info from fruityvice api
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+search_on)
         #create a data frame with the response
-        # fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True).to_pandas() 
+        # fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
         pd_fr = fruityvice_response.json()
         pd_dffr = pd.DataFrame.from_dict(pd_fr)
-        out = pd_dffr["nutritions"]
-        st.write(pd_dffr)
+        ren = pd_dffr.rename(columns={"name": "Fruit", "nutritions": "Nutritional Value"})
+        out = ren["Name","Nutritional Value"]
+        st.dataframe(out, use_container_width=True)
 
 
 
